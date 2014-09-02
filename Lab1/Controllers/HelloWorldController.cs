@@ -11,18 +11,21 @@ namespace Lab1.Controllers
         // 
         // GET: /HelloWorld/ 
 
-        public string Index()
+        public ActionResult Index()
         {
-            return "Ceci est mon action par <b>défaut</b>...";
+            return View();
         }
 
         // 
         // GET: /HelloWorld/Welcome/ 
 
 
-        public string Welcome(string name, int numTimes = 1)
+        public ActionResult Welcome(string name, int numTimes = 1)
         {
-            return HttpUtility.HtmlEncode("Bonjour " + name + ", NumTimes is: " + numTimes);
+            ViewBag.Message = "Bonjour jeune légume nommé " + name;
+            ViewBag.NumTimes = numTimes;
+
+            return View();
         }
     }
 }
