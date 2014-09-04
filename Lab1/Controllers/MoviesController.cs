@@ -34,6 +34,21 @@ namespace Lab1.Controllers
             return View(movie);
         }
 
+        /* Ceci est la fonction qui est présente sur le site web
+         * public ActionResult Details(int? id)
+            {
+                if (id == null)
+                {
+                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                     Movie movie = db.Movies.Find(id);
+                if (movie == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(movie);
+            }
+         * */
         //
         // GET: /Movies/Create
 
@@ -85,7 +100,36 @@ namespace Lab1.Controllers
             }
             return View(movie);
         }
+        /* Ceci est la fonction qui est présente sur le site web
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+        */
 
+        /* Une autre fonction Delete qui est présente sur le site
+          
+        public ActionResult Delete(FormCollection fcNotUsed, int id = 0)
+        {
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+         */
         //
         // GET: /Movies/Delete/5
 
@@ -103,6 +147,7 @@ namespace Lab1.Controllers
         // POST: /Movies/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Movie movie = db.Movies.Find(id);
@@ -137,8 +182,6 @@ namespace Lab1.Controllers
             }
 
         }
-
-       
 
         protected override void Dispose(bool disposing)
         {
